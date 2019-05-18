@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Stock implements Serializable {
