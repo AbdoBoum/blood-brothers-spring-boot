@@ -24,6 +24,7 @@ public class GroupSang {
     @OneToMany(mappedBy = "groupSang")
     Collection<Donnateur> donnateurs;
 
-    @ManyToMany(mappedBy = "sangGroups")
-    Collection<Demande> demandes;
+    @OneToMany(mappedBy = "groupSangStock")
+    Collection<Stock> stocks;
+
 }

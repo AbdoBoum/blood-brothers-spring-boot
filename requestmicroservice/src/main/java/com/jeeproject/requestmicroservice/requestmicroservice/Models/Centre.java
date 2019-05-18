@@ -5,33 +5,41 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Centre implements Serializable {
+public class Centre {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idCentre;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long id;
 
+    @NotBlank
+    @Column(name = "nom_centre")
+    private String nomCentre;
+
+    @NotBlank
+    private String telephoneCentre;
+
+    @NotBlank
     private String emailCentre;
 
+    @NotBlank
     private String passwordCentre;
 
-    private String nameCentre;
-
-    private String teleCentre;
-
+    @NotBlank
     private String adresseCentre;
 
     @ManyToOne
     private Ville villeCentre;
 
+    @OneToMany(mappedBy = "centreStock")
+    Collection<Stock> stocks;
+
     @OneToMany(mappedBy = "centreDemande")
     Collection<Demande> demandes;
-
 }
