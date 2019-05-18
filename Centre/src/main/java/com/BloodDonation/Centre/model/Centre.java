@@ -1,4 +1,4 @@
-package com.bloodbrothers.blogservice.Entities;
+package com.BloodDonation.Centre.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,5 +42,5 @@ public class Centre {
 
     @OneToMany(mappedBy = "centreDemande")
     Collection<Demande> demandes;
-}
 
+}
