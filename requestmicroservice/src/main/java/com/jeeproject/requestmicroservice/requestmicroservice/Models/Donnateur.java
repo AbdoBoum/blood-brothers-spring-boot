@@ -21,7 +21,7 @@ public class Donnateur {
     @Column(name = "cin_donnateur")
     private String cin;
 
-    @Column(name = "cin_donnateur")
+    @Column(name = "nom_donnateur")
     private String nom;
 
     @Column(name = "prenom_donnateur")

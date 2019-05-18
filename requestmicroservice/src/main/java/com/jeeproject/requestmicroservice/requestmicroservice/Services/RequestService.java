@@ -14,14 +14,14 @@ public class RequestService {
     @Autowired
     private RequestRepository mRequestRepository;
 
-    public List<Demande> getTopics() {
+    public List<Demande> getDemandes() {
         List<Demande> demandes = new ArrayList<>();
         mRequestRepository.findAll()
                 .forEach(demandes::add);
         return demandes;
     }
 
-    public Demande getDemande(String id) {
+    public Demande getDemande(long id) {
         return mRequestRepository.findById(id).get();
     }
 
@@ -33,7 +33,7 @@ public class RequestService {
         mRequestRepository.save(demande);
     }
 
-    public void deleteDemande(String id) {
+    public void deleteDemande(long id) {
         mRequestRepository.deleteById(id);
     }
 }
