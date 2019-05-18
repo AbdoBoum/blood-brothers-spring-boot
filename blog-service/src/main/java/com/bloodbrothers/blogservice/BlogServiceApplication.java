@@ -46,7 +46,7 @@ public class BlogServiceApplication implements CommandLineRunner {
         Ville v = new Ville(1l, "Rabat", null, null);
         mvilleRepository.save(v);
 
-        GroupSang g = new GroupSang(1l, null, null);
+        GroupSang g = new GroupSang(1l, null, null, null);
         msangRepository.save(g);
 
         Donnateur donnateur = new Donnateur(1l, "GY35678", "BOUMAHDI", "ABDERRAHIM",
