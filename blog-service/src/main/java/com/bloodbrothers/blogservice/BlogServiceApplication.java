@@ -43,18 +43,31 @@ public class BlogServiceApplication implements CommandLineRunner {
 
         repositoryRestConfiguration.exposeIdsFor(Blog.class);
 
-        Ville v = new Ville(1l, "Rabat", null, null);
-        mvilleRepository.save(v);
+        Ville rabat = new Ville( "Rabat", null, null);
+        Ville casa = new Ville("Casablanca", null, null);
+        Ville kenitra = new Ville("Kenitra", null, null);
+        Ville Marrakech = new Ville("Marrakech", null, null);
+        mvilleRepository.save(rabat); mvilleRepository.save(casa);
+        mvilleRepository.save(kenitra); mvilleRepository.save(Marrakech);
 
-        GroupSang g = new GroupSang(1l, null, null, null);
-        msangRepository.save(g);
+        GroupSang ap = new GroupSang("A+", null, null);
+        GroupSang bp = new GroupSang("B+", null, null);
+        GroupSang am = new GroupSang("A-", null, null);
+        GroupSang bm = new GroupSang("B-", null, null);
+        GroupSang abp = new GroupSang("AB+", null, null);
+        GroupSang abm = new GroupSang("AB-", null, null);
+        GroupSang op = new GroupSang("O+", null, null);
+        GroupSang om = new GroupSang("O-", null, null);
+        msangRepository.save(ap); msangRepository.save(am); msangRepository.save(abp);
+        msangRepository.save(abm); msangRepository.save(bm); msangRepository.save(bp);
+        msangRepository.save(om); msangRepository.save(op);
 
-        Donnateur donnateur = new Donnateur(1l, "GY35678", "BOUMAHDI", "ABDERRAHIM",
-                "boum.abdo@gmail.com", "azerty@20394KJ", "0656458694", v, g, null);
+        Donnateur donnateur = new Donnateur("GY35678", "BOUMAHDI", "ABDERRAHIM",
+                "boum.abdo@gmail.com", "azerty@20394KJ", "0656458694", rabat, ap, null);
 
         donorRepository.save(donnateur);
         Blog blog = new Blog(1l, "Blood Brothers", "Dummy Container",
-                "localhost://image", new Timestamp(11l), donnateur);
+                "localhost://image", new Timestamp(System.currentTimeMillis()), donnateur);
 
         mblogRepositiry.save(blog);
     }
