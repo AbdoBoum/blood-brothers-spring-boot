@@ -32,4 +32,12 @@ public class Blog {
 
     @ManyToOne
     private Donnateur donnateur;
+
+    public Blog(String titre, String contenu, String pathImgBlog, Timestamp date, Donnateur donnateur) {
+        this.titre = titre;
+        this.contenu = contenu;
+        this.pathImgBlog = pathImgBlog;
+        this.date = date;
+        this.donnateur = donnateur;
+    }
 }

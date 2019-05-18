@@ -15,14 +15,22 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 public class Stock implements Serializable {
+
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     private Centre centreStock;
+
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     private GroupSang groupSangStock;
 
     private int quantite;
+
+    public Stock(Centre centreStock, GroupSang groupSangStock, int quantite) {
+        this.centreStock = centreStock;
+        this.groupSangStock = groupSangStock;
+        this.quantite = quantite;
+    }
 }
 
 

@@ -44,4 +44,16 @@ public class Donnateur {
 
     @OneToMany(mappedBy = "donnateur")
     Collection<Blog> blogs;
+
+    public Donnateur(String cin, String nom, String prenom, String email, String password, String tele, Ville villeDonnateur, GroupSang groupSang, Collection<Blog> blogs) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.tele = tele;
+        this.villeDonnateur = villeDonnateur;
+        this.groupSang = groupSang;
+        this.blogs = blogs;
+    }
 }

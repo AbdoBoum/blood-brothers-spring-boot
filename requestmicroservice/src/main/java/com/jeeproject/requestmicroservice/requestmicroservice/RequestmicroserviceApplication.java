@@ -9,13 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.web.client.RestTemplate;
 
 import java.sql.Date;
 import java.sql.Timestamp;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class RequestmicroserviceApplication implements CommandLineRunner {
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 
     @Autowired
     RequestRepository mRequestRepositiry;
@@ -39,12 +50,6 @@ public class RequestmicroserviceApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         repositoryRestConfiguration.exposeIdsFor(Demande.class);
-
-        Ville v = new Ville(1l, "Rabat", null, null);
-        mvilleRepository.save(v);
-
-        GroupSang g = new GroupSang(1l, null, null, null);
-        msangRepository.save(g);
 
         Demande demande = new Demande(1l, "demande", "description", new Timestamp(11l),"F:/image.png",true, true,null,null);
         mRequestRepositiry.save(demande);

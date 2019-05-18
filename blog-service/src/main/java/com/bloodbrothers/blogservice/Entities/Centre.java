@@ -42,5 +42,16 @@ public class Centre {
 
     @OneToMany(mappedBy = "centreDemande")
     Collection<Demande> demandes;
+
+    public Centre(@NotBlank String nomCentre, @NotBlank String telephoneCentre, @NotBlank String emailCentre, @NotBlank String passwordCentre, @NotBlank String adresseCentre, Ville villeCentre, Collection<Stock> stocks, Collection<Demande> demandes) {
+        this.nomCentre = nomCentre;
+        this.telephoneCentre = telephoneCentre;
+        this.emailCentre = emailCentre;
+        this.passwordCentre = passwordCentre;
+        this.adresseCentre = adresseCentre;
+        this.villeCentre = villeCentre;
+        this.stocks = stocks;
+        this.demandes = demandes;
+    }
 }
 

@@ -36,6 +36,17 @@ public class Demande implements Serializable {
 
     @ManyToMany
     private List<GroupSang> sangGroups;
+
+    public Demande(String titleDemande, String descriptionDemande, Timestamp dateDemande, String pathImgDemande, boolean isUrgent, boolean isActive, Centre centreDemande, List<GroupSang> sangGroups) {
+        this.titleDemande = titleDemande;
+        this.descriptionDemande = descriptionDemande;
+        this.dateDemande = dateDemande;
+        this.pathImgDemande = pathImgDemande;
+        this.isUrgent = isUrgent;
+        this.isActive = isActive;
+        this.centreDemande = centreDemande;
+        this.sangGroups = sangGroups;
+    }
 }
 
 

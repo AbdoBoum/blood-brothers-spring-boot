@@ -26,4 +26,10 @@ public class Ville implements Serializable {
     @OneToMany(mappedBy = "villeDonnateur")
     private List<Donnateur> donnateurs;
 
+    public Ville(String nomVille, List<Centre> centres, List<Donnateur> donnateurs) {
+        this.nomVille = nomVille;
+        this.centres = centres;
+        this.donnateurs = donnateurs;
+    }
+
 }

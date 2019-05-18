@@ -27,4 +27,9 @@ public class GroupSang {
     @OneToMany(mappedBy = "groupSangStock")
     Collection<Stock> stocks;
 
+    public GroupSang(String nom, Collection<Donnateur> donnateurs, Collection<Stock> stocks) {
+        this.nom = nom;
+        this.donnateurs = donnateurs;
+        this.stocks = stocks;
+    }
 }
