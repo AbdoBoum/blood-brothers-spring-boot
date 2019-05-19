@@ -1,10 +1,5 @@
 package com.blooddonation.donorcentrerequest;
 
-import com.blooddonation.donorcentrerequest.Entities.Centre;
-import com.blooddonation.donorcentrerequest.Entities.Donnateur;
-import com.blooddonation.donorcentrerequest.Entities.Stock;
-import com.blooddonation.donorcentrerequest.Repositories.CenterRepository;
-import com.blooddonation.donorcentrerequest.Repositories.DonorRepository;
 import com.blooddonation.donorcentrerequest.Repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
