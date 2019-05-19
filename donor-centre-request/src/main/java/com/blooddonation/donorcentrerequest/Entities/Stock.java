@@ -26,4 +26,9 @@ public class Stock implements Serializable {
 
     private int quantiteStock;
 
+    public Stock(long centreId, long groupeSangId, int quantiteStock) {
+        CentreId = centreId;
+        this.groupeSangId = groupeSangId;
+        this.quantiteStock = quantiteStock;
+    }
 }

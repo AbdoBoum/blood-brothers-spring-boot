@@ -1,6 +1,6 @@
 package com.blooddonation.donorcentrerequest.resources;
 
-import io.javabrains.movieinfoservice.Entities.*;
+import com.blooddonation.donorcentrerequest.Entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,17 +24,10 @@ public class Controller {
         return donnateurWrapper;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/donnateurs")
-    public void addTopic(@RequestBody Donnateur donnateur) {
-        repository.save(donnateur);
-    }
-
     @RequestMapping("/centres/{id}/stocks")
     public GroupSangCentreIdsWrapper getAllGroupSangsOfCentreId(@PathVariable long id) {
         GroupSangCentreIdsWrapper groupSangCentreIdsWrapper = new GroupSangCentreIdsWrapper();
         List<GroupSangCentreIds> listGroupSangsCentre = new ArrayList<GroupSangCentreIds>();
-
-        List<Stock> stocksCentre = new ArrayList<Stock>();
         List<Stock> allStocks = new ArrayList<Stock>();
         stockRepository.findAll().forEach(allStocks::add);
         for (Stock s : allStocks) {

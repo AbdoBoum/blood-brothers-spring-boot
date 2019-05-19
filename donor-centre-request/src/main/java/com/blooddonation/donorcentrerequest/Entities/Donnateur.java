@@ -41,4 +41,14 @@ public class Donnateur {
     @Column(name = "id_groupsang")
     private long idGroupSang;
 
+    public Donnateur(String cin, String nom, String prenom, String email, String password, String tele, long idVille, long idGroupSang) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.tele = tele;
+        this.idVille = idVille;
+        this.idGroupSang = idGroupSang;
+    }
 }
