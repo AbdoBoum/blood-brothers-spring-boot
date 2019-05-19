@@ -17,24 +17,18 @@ public class Centre {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
-
-    @NotBlank
+    
     @Column(name = "nom_centre")
     private String nomCentre;
 
-    @NotBlank
     private String telephoneCentre;
 
-    @NotBlank
     private String emailCentre;
 
-    @NotBlank
     private String passwordCentre;
 
-    @NotBlank
     private String adresseCentre;
 
-    @NotBlank
     private long idVilleCentre;
 
     public Centre(@NotBlank String nomCentre, @NotBlank String telephoneCentre, @NotBlank String emailCentre, @NotBlank String passwordCentre, @NotBlank String adresseCentre, @NotBlank long idVilleCentre) {
