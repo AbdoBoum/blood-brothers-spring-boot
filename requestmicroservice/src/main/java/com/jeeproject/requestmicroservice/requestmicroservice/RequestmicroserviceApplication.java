@@ -51,10 +51,10 @@ public class RequestmicroserviceApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         repositoryRestConfiguration.exposeIdsFor(Demande.class);
 
-        Demande demande = new Demande(1l, "demande", "description", new Timestamp(11l),"F:/image.png",true, true,null,null);
+        Demande demande = new Demande("demande", "description", new Timestamp(11l),"F:/image.png",true, true,null,null);
         mRequestRepositiry.save(demande);
 
-        Centre centre = new Centre(1l,"nom centre","+213983783","centre@gmail.com","password","adresse",null,null,null);
+        Centre centre = new Centre("nom centre","+213983783","centre@gmail.com","password","adresse",null,null,null);
         mCentreRepository.save(centre);
 
 
