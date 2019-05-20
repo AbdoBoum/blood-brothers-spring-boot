@@ -1,0 +1,13 @@
+//package com.bloodbrothers.authenticationservice.Controller;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.authentication.AuthenticationManager;
+//import org.springframework.web.bind.annotation.CrossOrigin;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//@CrossOrigin(origins = "*", maxAge = 3600)
+//@RestController
+//public class AuthentificationController  {
+//    @Autowired
+//    AuthenticationManager authenticationManager;
+//}

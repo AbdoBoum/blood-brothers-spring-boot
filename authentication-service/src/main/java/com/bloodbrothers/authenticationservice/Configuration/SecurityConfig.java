@@ -1,7 +1,6 @@
-package com.bloodbrothers.authenticationservice.SecurityConfig;
+package com.bloodbrothers.authenticationservice.Configuration;
 
 import com.bloodbrothers.authenticationservice.Repository.UserRepository;
-import com.bloodbrothers.authenticationservice.Service.Security.AppAuthProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -33,13 +31,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AccessDeniedHandler accessDeniedHandler;
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userRepository);
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.csrf()
                 .disable()
                 .exceptionHandling()
@@ -63,7 +63,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user").authenticated()
                 .anyRequest().permitAll();
     }
+
     private class AuthentificationLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+
         @Override
         public void onAuthenticationSuccess(HttpServletRequest request,
                                             HttpServletResponse response, Authentication authentication)
@@ -71,17 +73,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             response.setStatus(HttpServletResponse.SC_OK);
         }
     }
+
     private class AuthentificationLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
+
         @Override
         public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
                                     Authentication authentication) throws IOException, ServletException {
             response.setStatus(HttpServletResponse.SC_OK);
         }
     }
+
     @Bean
     public AuthenticationProvider getProvider() {
+
         AppAuthProvider provider = new AppAuthProvider();
         provider.setUserDetailsService(userDetailsService);
         return provider;
+
     }
 }
