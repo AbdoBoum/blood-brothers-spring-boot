@@ -17,7 +17,7 @@ public class Centre {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     @Column(name = "nom_centre")
     private String nomCentre;
 
