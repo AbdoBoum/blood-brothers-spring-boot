@@ -32,6 +32,27 @@ public class AccueilController {
         return donnateur;
     }
 
+    @RequestMapping("/villes")
+    public List<Ville> getAllVilles() {
+
+        VilleWrapper villeWrapper = restTemplate.getForObject("http://ville-sang-service/villes/", VilleWrapper.class);
+
+        return villeWrapper.getVilles();
+    }
+
+    @RequestMapping("/villes/{id]/donnateurs")
+    public List<Donnateur> getDonnateursOfVille(@PathVariable("id") long id) {
+
+        List<Donnateur> donnateurs = new ArrayList<>();
+        DonnateurWrapper donnateurWrapper = restTemplate.getForObject("http://donor-center-service/donnateurs/", DonnateurWrapper.class);
+        for (Donnateur donnateur : donnateurWrapper.getDonnateurs()) {
+            if (donnateur.getIdVille() == id) {
+                donnateurs.add(donnateur);
+            }
+        }
+        return donnateurs;
+    }
+
     @RequestMapping("/blogs")
     public List<Blog> getAllBlogs() {
         BlogWrapper blogWrapper = restTemplate.getForObject("http://blog-request-service/blogs", BlogWrapper.class);

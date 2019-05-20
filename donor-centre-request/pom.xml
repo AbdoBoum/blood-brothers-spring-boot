@@ -107,6 +107,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>donor-center-service</finalName>
     </build>
 
 </project>
