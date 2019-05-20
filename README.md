@@ -21,7 +21,7 @@ The are 5 main microservices :
 <p>ville-sang-service: gives CRUD operations on ville and sang. (run on port: 8081)</p>
 <br>
 There are two other microservices that are not completed: authentication-service which allows us to secure our app, and config-service which wrapp all the configuration of the project.
-<br>
+<br><br>
 You can run the app using your IDE by running all the microservices or by using Docker. We have created a Dockerfile for each microservice which allows us to create an image of that microservice. To create docker images first generate .jar file then go to the root directory of the project and run the command: "docker build -f Dockerfile -t image-name ." (don't forget the dot, and you can replace the image name with any name of your choice or just by the microservice name).
 <br>
 After creating all the images go the discovery-server which contains the docker-compose.yml that allows to define and run multi-container Docker applications. Go to root directory and type the command: "docker-compose up -d" and don't forget to change the name of images in the file docker-compose.yml. After runing you should be able to browse the application.
