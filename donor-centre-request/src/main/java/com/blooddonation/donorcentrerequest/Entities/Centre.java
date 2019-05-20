@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Collection;
 
 @Data
 @Entity
@@ -15,7 +14,8 @@ import java.util.Collection;
 public class Centre {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_centre")
     private long id;
     
     @Column(name = "nom_centre")

@@ -35,4 +35,14 @@ public class Demande implements Serializable {
 
     private long idGroupSang;
 
+    public Demande(String titleDemande, String descriptionDemande, Timestamp dateDemande, String pathImgDemande, boolean isUrgent, boolean isActive, long idCentre, long idGroupSang) {
+        this.titleDemande = titleDemande;
+        this.descriptionDemande = descriptionDemande;
+        this.dateDemande = dateDemande;
+        this.pathImgDemande = pathImgDemande;
+        this.isUrgent = isUrgent;
+        this.isActive = isActive;
+        this.idCentre = idCentre;
+        this.idGroupSang = idGroupSang;
+    }
 }
