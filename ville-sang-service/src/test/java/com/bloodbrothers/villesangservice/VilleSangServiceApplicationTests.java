@@ -20,11 +20,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 public class VilleSangServiceApplicationTests {
 
-    @Autowired
-    MockMvc mockMvc;
+    //@Autowired
+    //MockMvc mockMvc;
 
-    @Test
-    public void contextLoads() throws Exception{
+    //@Test
+    /*public void contextLoads() throws Exception{
         mockMvc.perform( MockMvcRequestBuilders
                 .get("/villes")
                 .accept(MediaType.APPLICATION_JSON))
@@ -32,6 +32,6 @@ public class VilleSangServiceApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.villes").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.villes[*].idVille").isNotEmpty());
-    }
+    }*/
 
 }
