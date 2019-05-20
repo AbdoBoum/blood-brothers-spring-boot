@@ -24,5 +24,7 @@ public class AuthentificationServiceApplication implements CommandLineRunner {
 		centreService.createCentre(new Centre ("totoCentre","0340683","hamza@gmail.com","password","adresse",3l));
 		centreService.createCentre(new Centre ("titiCentre","0340683","hamza@gmail.com","password1","adresse",3l));
 		centreService.createCentre(new Centre ("zaatarCentre","0340683","hamza@gmail.com","password2","adresse",3l));
+		centreService.createCentre(new Centre ("Centre","0340683","hamza@gmail.com","password2","adresse",3l));
+		centreService.createCentre(new Centre ("toto","0340683","hamza@gmail.com","password2","adresse",3l));
 	}
 }

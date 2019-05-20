@@ -8,13 +8,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Centre implements UserDetails {
+public class Centre implements Serializable,UserDetails {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -74,6 +75,6 @@ public class Centre implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return false;
     }
 }

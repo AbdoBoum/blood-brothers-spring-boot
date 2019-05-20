@@ -9,9 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 
@@ -37,27 +34,40 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        super.configure(http);
-        http.csrf()
-                .disable()
-                .exceptionHandling()
-                .authenticationEntryPoint(new Http403ForbiddenEntryPoint(){})
-                .and()
-                .authenticationProvider(getProvider())
-                .formLogin()
-                .loginProcessingUrl("/login")
-                .successHandler(new AuthentificationLoginSuccessHandler())
-                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessHandler(new AuthentificationLogoutSuccessHandler())
-                .invalidateHttpSession(true)
-                .and()
-                .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/logout").permitAll()
-                .antMatchers("/centres").authenticated()
-                .anyRequest().permitAll();
+//        http.csrf()
+//                .disable()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(new Http403ForbiddenEntryPoint(){})
+//                .and()
+//                .authenticationProvider(getProvider())
+//                .formLogin()
+//                .loginProcessingUrl("/login")
+//                .successHandler(new AuthentificationLoginSuccessHandler())
+//                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
+//                .and()
+//                .logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessHandler(new AuthentificationLogoutSuccessHandler())
+//                .invalidateHttpSession(true)
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers("/login").permitAll()
+//                .antMatchers("/logout").permitAll()
+//                .antMatchers("/centres").authenticated()
+//                .anyRequest().permitAll();
+        http.authorizeRequests()
+                                     .antMatchers("/").authenticated()
+                                .and()
+                                    .formLogin().loginPage("/login").defaultSuccessUrl("/centres").failureUrl("/login")
+                                    .usernameParameter("username").passwordParameter("password")
+                                .and()
+                                    .logout().invalidateHttpSession(true)
+                                    .logoutUrl("/logout")
+                                    .logoutSuccessUrl("/login")
+                                .and()
+                                    .csrf()
+                                .and()
+                                    .sessionManagement().maximumSessions(1).expiredUrl("/login");
     }
 
     private class AuthentificationLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
