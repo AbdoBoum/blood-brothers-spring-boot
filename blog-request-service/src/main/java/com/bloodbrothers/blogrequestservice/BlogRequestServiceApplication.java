@@ -8,14 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class BlogRequestServiceApplication implements CommandLineRunner {
 
     @Autowired
@@ -40,6 +39,7 @@ public class BlogRequestServiceApplication implements CommandLineRunner {
                 "C://user/Abderrahim/desktop/img.png", false, true, 1l, 1);
         Demande demande1 = new Demande("Another Blood Request", "Blood Needed ASAP", new Timestamp(System.currentTimeMillis()),
                 "C://user/Abderrahim/desktop/img.png", true, true, 2l, 2);
-        requestRepository.save(demande); requestRepository.save(demande1);
+        requestRepository.save(demande);
+        requestRepository.save(demande1);
     }
 }

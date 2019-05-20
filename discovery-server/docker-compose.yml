@@ -1,0 +1,37 @@
+version: '3'
+services:
+  discovery-server:
+    image: discovery-server
+    ports:
+    - 8761:8761
+  #config:
+    #image: developer.okta.com/microservice-docker-config:0.0.1-SNAPSHOT
+    #volumes:
+    #- ./config-data:/var/config-data
+    #environment:
+    #- JAVA_OPTS=
+      #-DEUREKA_SERVER=http://discovery:8761/eureka
+     # -Dspring.cloud.config.server.native.searchLocations=/var/config-data
+    #depends_on:
+    #- discovery
+    #ports:
+    #- 8888:8888
+  blog-request-service:
+    image: blog-request-image
+    environment:
+    - JAVA_OPTS=
+      -DEUREKA_SERVER=http://localhost:8761/
+    depends_on:
+    - discovery-server
+    #- config
+  #school-ui:
+    #image: developer.okta.com/microservice-docker-school-ui:0.0.1-SNAPSHOT
+    #environment:
+    #- JAVA_OPTS=
+     # -DEUREKA_SERVER=http://discovery:8761/eureka
+    #restart: on-failure
+    #depends_on:
+    #- discovery
+    #- config
+    ports:
+    - 8082:8082

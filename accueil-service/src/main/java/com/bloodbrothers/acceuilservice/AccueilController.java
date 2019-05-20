@@ -1,7 +1,6 @@
 package com.bloodbrothers.acceuilservice;
 
 import com.bloodbrothers.acceuilservice.models.*;
-import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -98,10 +97,10 @@ public class AccueilController {
     }
 
     @RequestMapping("groupSangs/{id}/demandes") //à completer dans blog service !!!!
-    public List<Demande> getAllDemandesOfGroupSang(@PathVariable long id){
+    public List<Demande> getAllDemandesOfGroupSang(@PathVariable long id) {
         List<Demande> demandes = new ArrayList<>();
         DemandeWrapper demandeWrapper = restTemplate.getForObject("http://blog-request-service/demandes/", DemandeWrapper.class);
-        for (Demande demande: demandeWrapper.getDemandes()) {
+        for (Demande demande : demandeWrapper.getDemandes()) {
             if (demande.getIdGroupSang() == id) {
                 demandes.add(demande);
             }
