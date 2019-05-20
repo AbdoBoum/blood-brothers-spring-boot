@@ -1,7 +1,6 @@
 package com.bloodbrothers.acceuilservice;
 
 import com.bloodbrothers.acceuilservice.models.*;
-import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +30,27 @@ public class AccueilController {
     public Donnateur getDonnateur(@PathVariable long id) {
         Donnateur donnateur = restTemplate.getForObject("http://donor-center-service/donnateurs/" + id, Donnateur.class);
         return donnateur;
+    }
+
+    @RequestMapping("/villes")
+    public List<Ville> getAllVilles() {
+
+        VilleWrapper villeWrapper = restTemplate.getForObject("http://ville-sang-service/villes/", VilleWrapper.class);
+
+        return villeWrapper.getVilles();
+    }
+
+    @RequestMapping("/villes/{id]/donnateurs")
+    public List<Donnateur> getDonnateursOfVille(@PathVariable("id") long id) {
+
+        List<Donnateur> donnateurs = new ArrayList<>();
+        DonnateurWrapper donnateurWrapper = restTemplate.getForObject("http://donor-center-service/donnateurs/", DonnateurWrapper.class);
+        for (Donnateur donnateur : donnateurWrapper.getDonnateurs()) {
+            if (donnateur.getIdVille() == id) {
+                donnateurs.add(donnateur);
+            }
+        }
+        return donnateurs;
     }
 
     @RequestMapping("/blogs")
@@ -98,10 +118,10 @@ public class AccueilController {
     }
 
     @RequestMapping("groupSangs/{id}/demandes") //à completer dans blog service !!!!
-    public List<Demande> getAllDemandesOfGroupSang(@PathVariable long id){
+    public List<Demande> getAllDemandesOfGroupSang(@PathVariable long id) {
         List<Demande> demandes = new ArrayList<>();
         DemandeWrapper demandeWrapper = restTemplate.getForObject("http://blog-request-service/demandes/", DemandeWrapper.class);
-        for (Demande demande: demandeWrapper.getDemandes()) {
+        for (Demande demande : demandeWrapper.getDemandes()) {
             if (demande.getIdGroupSang() == id) {
                 demandes.add(demande);
             }

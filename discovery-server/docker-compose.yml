@@ -1,0 +1,59 @@
+version: '3'
+services:
+  discovery:
+    image: discovery-server
+    ports:
+    - 8761:8761
+  config:
+    image: configserver
+    volumes:
+    - ./config-data:/var/config-data
+    environment:
+    - JAVA_OPTS=
+      -DEUREKA_SERVER=http://discovery:8761/eureka
+      -Dspring.cloud.config.server.native.searchLocations=/var/config-data
+    depends_on:
+    - discovery
+    ports:
+    - 8888:8888
+  blog-request-service:
+    image: blog-request-image
+    environment:
+    - JAVA_OPTS=
+      -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+    - discovery
+    - config
+    ports:
+    - 8082:8082
+  ville-sang-service:
+    image: ville-sang-service
+    environment:
+    - JAVA_OPTS=
+      -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+    - discovery
+    - config
+    ports:
+    - 8081:8081
+  donor-center-service:
+    image: donor-center-image
+    environment:
+    - JAVA_OPTS=
+      -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+    - discovery
+    - config
+    ports:
+    - 8083:8083
+  acceuil:
+    image: acceuil-service
+    environment:
+    - JAVA_OPTS=
+      -DEUREKA_SERVER=http://discovery:8761/eureka
+    restart: on-failure
+    depends_on:
+    - discovery
+    - config
+    ports:
+    - 8087:8087
