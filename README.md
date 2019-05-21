@@ -2,7 +2,6 @@
 
 
 The are 5 main microservices : 
-<br>
 
   - discovery-server
   - accueil-service
