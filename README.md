@@ -11,16 +11,12 @@ The are 5 main microservices :
 
 
 # Descrption of microservices: 
+
 - discovery server: The deployment should be automated so that no one cares about server names and physical location. Nonetheless, it is essential to have a tool that helps the services to discover their counterparts. There are many solutions available, and for our project, we used Eureka from Netflix as it has outstanding Spring support. (run on port: 8761)
-<br>
 - accueil-service: it's the microservice that receive client requests and then make a call to all concerned microservices then return the response to the clien. Simply, his job is to make call to other microservices to link them. (run on port: 8087)
-<br>
 - blog-request-service: gives CRUD operations on blog and request. (run on port: 8082)
-<br>
 - donor-centre-service: gives CRUD operations on center, donor and stock. (run on port: 8083)
-<br>
 - ville-sang-service: gives CRUD operations on ville and sang. (run on port: 8081)
-<br>
 - There are two other microservices that are not completed: authentication-service which allows us to secure our app, and config-service which wrapp all the configuration of the project.
 <br><br>
 
