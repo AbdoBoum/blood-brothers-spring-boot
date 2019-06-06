@@ -9,6 +9,8 @@ The are 5 main microservices :
   - donor-centre-service
   - ville-sang-service
 
+![microservices](https://user-images.githubusercontent.com/41730760/59034924-ba450e00-885b-11e9-87ef-df7e43770926.png)
+
 
 # Descrption of microservices: 
 
